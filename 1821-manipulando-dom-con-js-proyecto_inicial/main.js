@@ -11,7 +11,21 @@ const btn = document.querySelector("[data-form-btn]"); //seleccionamos el boton 
 const createTask = (evento) => {
     evento.preventDefault(); //no refresh la pag y no quita el input
     const input = document.querySelector("[data-form-input]");
-    console.log(input.value);
+    const value = input.value;
+    const list = document.querySelector("[data-list]");
+    const task = document.createElement("li");
+    task.classList.add("card"); //agregamos la clase a el elemento que acabamos de crear para que tome el css
+    input.value = '';   //haciendo que limpie el filtro luego de hacer click
+    const content = `
+    <div>
+        <i class="far fa-check-square icon"></i>
+        <span class="task">${value}</span>
+    </div>
+        <i class="fas fa-trash-alt trashIcon icon"></i>
+    `
+    list.appendChild(task);
+    task.innerHTML = content;
+    console.log(content);
 }
 console.log(btn);
 

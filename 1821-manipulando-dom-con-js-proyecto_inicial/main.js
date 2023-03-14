@@ -1,4 +1,5 @@
-(() => {
+import checkComplete from "./components/checkComplete.js";
+import deleteIcon from "./components/deleteIcon.js";
 
 //data attributes "[nombre del data atribute]"
 const btn = document.querySelector("[data-form-btn]"); 
@@ -18,38 +19,21 @@ const createTask = (evento) => {
     const titleTask = document.createElement('span');
     titleTask.classList.add('task');
     titleTask.innerHTML = value;
+    
     taskContent.appendChild(checkComplete());
     taskContent.appendChild(titleTask);
 
+
     //TEMPLATE STRINGS
-    const content = `
-        <i class="fas fa-trash-alt trashIcon icon"></i>
-    `;
+
     //colocar un elemento hijo a un (padre)
     task.appendChild(taskContent);
+    task.appendChild(deleteIcon())
     list.appendChild(task);
     //task.innerHTML = content;
-
 }
-
 
 //listener de tipo click listener tien 2 parametros accion, lo que hace
 btn.addEventListener("click", createTask);
 
-const checkComplete = () => {
-    const i = document.createElement("i");
-    i.classList.add("far","fa-check-square","icon");    //solucion a muchos caracteres + de 1 clase, es mejore separarlas
-    i.addEventListener("click", completeTask);
-    return i;
-}
-
-//TARGET Y TOGGLE
-const completeTask = (event) => {
-    const element = event.target; //Encontrar el objetivo del evento utilizando la propiedad  TARGET
-    element.classList.toggle("fas");
-    element.classList.toggle("completeIcon");
-    element.classList.toggle("far");
-}
-
 //IIFE - Immediately invoked function expression
-})();

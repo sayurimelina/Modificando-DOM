@@ -20,3 +20,6 @@ console.log(btn);
 btn.addEventListener("click", createTask);
 
 //arrow function - funciones anonimas
+
+
+
